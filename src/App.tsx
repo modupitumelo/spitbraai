@@ -4,6 +4,7 @@ import { services } from './data/services';
 import { ServiceCard } from './components/ServiceCard';
 import { ServiceModal } from './components/ServiceModal';
 import { Chatbot } from './components/Chatbot';
+import { ImageLightbox } from './components/ImageLightbox';
 import { Service, SpitbraaiType } from './types';
 
 function App() {
@@ -12,12 +13,16 @@ function App() {
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [selectedSpitbraaiType, setSelectedSpitbraaiType] = useState<SpitbraaiType>('charcoal');
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
     message: ''
   });
+
+  const galleryImages = ['/1.jpg', '/2.jpg', '/3.jpg', '/4.jpg', '/5.jpg', '/6.jpg'];
 
   // Handle scroll to show/hide scroll-to-top button
   React.useEffect(() => {
@@ -84,6 +89,23 @@ function App() {
       element.scrollIntoView({ behavior: 'smooth' });
     }
     setIsMenuOpen(false);
+  };
+
+  const openLightbox = (index: number) => {
+    setCurrentImageIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const previousImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
   };
 
   return (
@@ -459,34 +481,29 @@ function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="relative overflow-hidden rounded-lg shadow-lg group">
-              <img 
-                src="/1.jpg"
-                alt="Professional spitbraai service"
-                className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300"
-                onError={(e) => {
-                  e.currentTarget.src = 'https://images.pexels.com/photos/1731427/pexels-photo-1731427.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop';
-                }}
-              />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <p className="text-white font-semibold text-lg">Professional Service</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {galleryImages.map((image, index) => (
+              <div 
+                key={index}
+                className="relative overflow-hidden rounded-lg shadow-lg group cursor-pointer"
+                onClick={() => openLightbox(index)}
+              >
+                <img 
+                  src={image}
+                  alt={`Spitbraai service ${index + 1}`}
+                  className="w-full h-64 sm:h-72 object-cover group-hover:scale-110 transition-transform duration-300"
+                  onError={(e) => {
+                    e.currentTarget.src = `https://images.pexels.com/photos/${1731427 + index}/pexels-photo-${1731427 + index}.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop`;
+                  }}
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <p className="text-white font-semibold text-lg">View Image</p>
+                </div>
+                <div className="absolute top-2 right-2 bg-black/50 text-white px-2 py-1 rounded-full text-xs font-medium">
+                  {index + 1}/6
+                </div>
               </div>
-            </div>
-
-            <div className="relative overflow-hidden rounded-lg shadow-lg group">
-              <img 
-                src="/2.jpg"
-                alt="Event catering setup"
-                className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300"
-                onError={(e) => {
-                  e.currentTarget.src = 'https://images.pexels.com/photos/2313686/pexels-photo-2313686.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop';
-                }}
-              />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <p className="text-white font-semibold text-lg">Event Catering</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -776,6 +793,16 @@ function App() {
         isOpen={isServiceModalOpen}
         onClose={() => setIsServiceModalOpen(false)}
         spitbraaiType={selectedSpitbraaiType}
+      />
+
+      {/* Image Lightbox */}
+      <ImageLightbox
+        images={galleryImages}
+        currentIndex={currentImageIndex}
+        isOpen={lightboxOpen}
+        onClose={closeLightbox}
+        onNext={nextImage}
+        onPrevious={previousImage}
       />
 
       {/* Chatbot */}
