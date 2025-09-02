@@ -309,28 +309,28 @@ function App() {
           <div className="mb-12">
             <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Choose Your Spitbraai Type</h3>
             <div className="flex justify-center mb-8">
-              <div className="bg-gray-100 p-2 rounded-lg flex space-x-2">
+              <div className="bg-gray-100 p-2 rounded-lg flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full max-w-md">
                 <button
                   onClick={() => setSelectedSpitbraaiType('charcoal')}
-                  className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-colors ${
+                  className={`flex items-center justify-center space-x-2 px-4 py-3 rounded-lg font-semibold transition-colors text-sm sm:text-base ${
                     selectedSpitbraaiType === 'charcoal'
                       ? 'bg-orange-600 text-white'
                       : 'text-gray-700 hover:bg-gray-200'
                   }`}
                 >
                   <Flame className="h-5 w-5" />
-                  <span>Charcoal/Firewood</span>
+                  <span className="whitespace-nowrap">Charcoal</span>
                 </button>
                 <button
                   onClick={() => setSelectedSpitbraaiType('gas')}
-                  className={`flex items-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-colors ${
+                  className={`flex items-center justify-center space-x-2 px-4 py-3 rounded-lg font-semibold transition-colors text-sm sm:text-base ${
                     selectedSpitbraaiType === 'gas'
                       ? 'bg-orange-600 text-white'
                       : 'text-gray-700 hover:bg-gray-200'
                   }`}
                 >
                   <Zap className="h-5 w-5" />
-                  <span>Gas Spitbraai</span>
+                  <span className="whitespace-nowrap">Gas</span>
                 </button>
               </div>
             </div>
@@ -348,7 +348,7 @@ function App() {
       <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center">
         <Flame className="h-5 w-5 text-white" />
       </div>
-      <h4 className="text-xl font-bold text-gray-900">Charcoal/Firewood Spitbraai</h4>
+      <h4 className="text-lg sm:text-xl font-bold text-gray-900">Charcoal/Firewood Spitbraai</h4>
     </div>
     <p className="text-gray-700 mb-4">
       Traditional authentic flavor with charcoal or firewood. Perfect for that authentic South African braai
@@ -356,20 +356,20 @@ function App() {
     </p>
     <div className="space-y-3">
       <div className="flex justify-between items-center py-2 border-b border-gray-200">
-        <span className="text-gray-700">Equipment Hire Only</span>
+        <span className="text-gray-700 text-sm sm:text-base">Equipment Hire Only</span>
         <span className="font-bold text-orange-600">R800</span>
       </div>
       <div className="flex justify-between items-center py-2 border-b border-gray-200">
-        <span className="text-gray-700">With Professional Chef</span>
+        <span className="text-gray-700 text-sm sm:text-base">With Professional Chef</span>
         <span className="font-bold text-orange-600">R1,300</span>
       </div>
       <div className="flex justify-between items-center py-2 border-b border-gray-200">
-        <span className="text-gray-700">Full Package: Lamb</span>
-        <span className="font-bold text-orange-600">R5,500</span>
+        <span className="text-gray-700 text-sm sm:text-base">Full Package: Pork</span>
+        <span className="font-bold text-orange-600">R4,700</span>
       </div>
       <div className="flex justify-between items-center py-2">
-        <span className="text-gray-700">Full Package: Pork</span>
-        <span className="font-bold text-orange-600">R4,700</span>
+        <span className="text-gray-700 text-sm sm:text-base">Full Package: Lamb</span>
+        <span className="font-bold text-orange-600">R5,500</span>
       </div>
     </div>
   </div>
@@ -386,7 +386,7 @@ function App() {
       <div className="w-8 h-8 bg-orange-600 rounded-full flex items-center justify-center">
         <Zap className="h-5 w-5 text-white" />
       </div>
-      <h4 className="text-xl font-bold text-gray-900">Gas Spitbraai</h4>
+      <h4 className="text-lg sm:text-xl font-bold text-gray-900">Gas Spitbraai</h4>
     </div>
     <p className="text-gray-700 mb-4">
       Clean, convenient cooking with consistent heat control. Ideal for venues with restrictions or when you
@@ -394,20 +394,20 @@ function App() {
     </p>
     <div className="space-y-3">
       <div className="flex justify-between items-center py-2 border-b border-gray-200">
-        <span className="text-gray-700">Equipment Hire Only</span>
+        <span className="text-gray-700 text-sm sm:text-base">Equipment Hire Only</span>
         <span className="font-bold text-orange-600">R1,200</span>
       </div>
       <div className="flex justify-between items-center py-2 border-b border-gray-200">
-        <span className="text-gray-700">With Professional Chef</span>
+        <span className="text-gray-700 text-sm sm:text-base">With Professional Chef</span>
         <span className="font-bold text-orange-600">R1,700</span>
       </div>
       <div className="flex justify-between items-center py-2 border-b border-gray-200">
-        <span className="text-gray-700">Full Package: Lamb</span>
-        <span className="font-bold text-orange-600">R5,800</span>
+        <span className="text-gray-700 text-sm sm:text-base">Full Package: Pork</span>
+        <span className="font-bold text-orange-600">R5,000</span>
       </div>
       <div className="flex justify-between items-center py-2">
-        <span className="text-gray-700">Full Package: Pork</span>
-        <span className="font-bold text-orange-600">R5,000</span>
+        <span className="text-gray-700 text-sm sm:text-base">Full Package: Lamb</span>
+        <span className="font-bold text-orange-600">R5,800</span>
       </div>
     </div>
   </div>
