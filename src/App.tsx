@@ -309,28 +309,28 @@ function App() {
           <div className="mb-12">
             <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Choose Your Spitbraai Type</h3>
             <div className="flex justify-center mb-8">
-              <div className="bg-gray-100 p-2 rounded-lg flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full max-w-md">
+              <div className="bg-gray-100 p-1 rounded-xl flex space-x-1 w-fit">
                 <button
                   onClick={() => setSelectedSpitbraaiType('charcoal')}
-                  className={`flex items-center justify-center space-x-2 px-4 py-3 rounded-lg font-semibold transition-colors text-sm sm:text-base ${
+                  className={`flex items-center justify-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 text-sm ${
                     selectedSpitbraaiType === 'charcoal'
-                      ? 'bg-orange-600 text-white'
-                      : 'text-gray-700 hover:bg-gray-200'
+                      ? 'bg-orange-600 text-white shadow-md'
+                      : 'text-gray-700 hover:bg-gray-200/50'
                   }`}
                 >
                   <Flame className="h-5 w-5" />
-                  <span className="whitespace-nowrap">Charcoal</span>
+                  <span>Charcoal</span>
                 </button>
                 <button
                   onClick={() => setSelectedSpitbraaiType('gas')}
-                  className={`flex items-center justify-center space-x-2 px-4 py-3 rounded-lg font-semibold transition-colors text-sm sm:text-base ${
+                  className={`flex items-center justify-center space-x-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200 text-sm ${
                     selectedSpitbraaiType === 'gas'
-                      ? 'bg-orange-600 text-white'
-                      : 'text-gray-700 hover:bg-gray-200'
+                      ? 'bg-orange-600 text-white shadow-md'
+                      : 'text-gray-700 hover:bg-gray-200/50'
                   }`}
                 >
                   <Zap className="h-5 w-5" />
-                  <span className="whitespace-nowrap">Gas</span>
+                  <span>Gas</span>
                 </button>
               </div>
             </div>
