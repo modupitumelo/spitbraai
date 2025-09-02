@@ -432,20 +432,7 @@ function App() {
           </div>
 
           {/* Service Cards */}
-          <div className="mb-12">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">What We Offer</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {services.map(service => (
-                <ServiceCard
-                  key={service.id}
-                  service={service}
-                  onViewDetails={handleViewServiceDetails}
-                  onGetQuote={handleGetQuote}
-                  spitbraaiType={selectedSpitbraaiType}
-                />
-              ))}
-            </div>
-          </div>
+          
 
           <div className="text-center mt-12">
             <a 
@@ -651,23 +638,37 @@ function App() {
                   ></textarea>
                 </div>
 
-                <div className="bg-gray-50 p-4 rounded-lg">
+               <div className="bg-gray-50 p-4 rounded-lg">
   <h4 className="font-semibold text-gray-900 mb-2">Available Service Types:</h4>
   <div className="space-y-2">
-    <div className="flex items-center space-x-2 text-gray-700">
+
+    {/* Charcoal/Firewood */}
+    <div
+      onClick={() => setSelectedSpitbraaiType("charcoal")}
+      className={`flex items-center space-x-2 p-2 rounded-lg cursor-pointer transition 
+        ${selectedSpitbraaiType === "charcoal" 
+          ? "bg-orange-50 border border-orange-600 font-semibold text-gray-900" 
+          : "hover:bg-gray-100 border border-transparent text-gray-700"}`}
+    >
       <Flame className="h-5 w-5 text-orange-600" />
-      <span className={selectedSpitbraaiType === 'charcoal' ? 'font-semibold text-gray-900' : ''}>
-        Charcoal/Firewood Spitbraai
-      </span>
+      <span>Charcoal/Firewood Spitbraai</span>
     </div>
-    <div className="flex items-center space-x-2 text-gray-700">
+
+    {/* Gas */}
+    <div
+      onClick={() => setSelectedSpitbraaiType("gas")}
+      className={`flex items-center space-x-2 p-2 rounded-lg cursor-pointer transition 
+        ${selectedSpitbraaiType === "gas" 
+          ? "bg-orange-50 border border-orange-600 font-semibold text-gray-900" 
+          : "hover:bg-gray-100 border border-transparent text-gray-700"}`}
+    >
       <Zap className="h-5 w-5 text-orange-600" />
-      <span className={selectedSpitbraaiType === 'gas' ? 'font-semibold text-gray-900' : ''}>
-        Gas Spitbraai
-      </span>
+      <span>Gas Spitbraai</span>
     </div>
+
   </div>
 </div>
+
 
 
                 <button
